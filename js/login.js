@@ -13,14 +13,20 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
         if (password.value === "") {
-            password.classList.add("error")
+            password.classList.add("error");
             completo == false;
         }
 
-        if(completo) {
-           window.location = "index.html"
-        } else{
-            alert("Debe completar!");
+        if (completo) {
+            if (email.value, password.value) {
+                window.location ="index.html"
+            } 
+            else {
+                alert ("Datos incorrectos!")
+            }
+        }
+        else {
+            alert("Datos incompletos!")
         }
 
     });

@@ -141,5 +141,5 @@ a.custom-card:hover {
 }
 
 .error {
-  background-color: red;
+ border-color: red;
 }
