@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         if (completo) {
             if (email.value, password.value) {
-                window.location ="index.html"
+                window.location ="inicio.html"
             } 
             else {
                 alert ("Datos incorrectos!")
