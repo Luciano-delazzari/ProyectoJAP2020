@@ -11,14 +11,19 @@ function mostrarProductos(array) {
           <div class="col-3">
               <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
           </div>
+          <hr>
           <div class="col">
               <div class="d-flex w-100 justify-content-between">
                   <h4 class="mb-1">`+ products.name +`</h4>
                   <small class="text-muted">` + products.soldCount + ` artículos</small>
               </div>
+              <hr>
               <p class="mb-1">` + products.description + `</p>
+              <hr>
           </div>
+          <hr>
       </div>
+      <hr>
   `
       
       
