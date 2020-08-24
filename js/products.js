@@ -1,40 +1,51 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-    [
-        {
-            "name": "Chevrolet Onix Joy",
-            "description": "Generación 2019, variedad de colores. Motor 1.0, ideal para ciudad.",
-            "cost": 13500,
-            "currency": "USD",
-            "imgSrc": "img/prod1.jpg",
-            "soldCount": 14
-        },
-        {
-            "name": "Fiat Way",
-            "description": "La versión de Fiat que brinda confort y a un precio accesible.",
-            "cost": 14500,
-            "currency": "USD",
-            "imgSrc": "img/prod2.jpg",
-            "soldCount": 52
-        },
-        {
-            "name": "Suzuki Celerio",
-            "description": "Un auto que se ha ganado la buena fama por su economía con el combustible.",
-            "cost": 12500,
-            "currency": "USD",
-            "imgSrc": "img/prod3.jpg",
-            "soldCount": 25
-        },
-        {
-            "name": "Peugeot 208",
-            "description": "El modelo de auto que se sigue renovando y manteniendo su prestigio en comodidad.",
-            "cost": 15200,
-            "currency": "USD",
-            "imgSrc": "img/prod4.jpg",
-            "soldCount": 17
-        }
-    ]
+var arrayDeProductos = [];
 
+function mostrarProductos(array) {
+  let contenidoaAgregar =  "";
+  
+  for (let index = 0; index < array.length; index++) {
+      products = array[index];
+
+      contenidoaAgregar += ` 
+      <div class="row">
+          <div class="col-3">
+              <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
+          </div>
+          <div class="col">
+              <div class="d-flex w-100 justify-content-between">
+                  <h4 class="mb-1">`+ products.name +`</h4>
+                  <small class="text-muted">` + products.soldCount + ` artículos</small>
+              </div>
+              <p class="mb-1">` + products.description + `</p>
+          </div>
+      </div>
+  `
+      
+      
+   
+      
+      document.getElementById("contenido").innerHTML = contenidoaAgregar
+  }
+}
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function(e){
+    
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === 'ok') 
+        {
+            arrayDeProductos = resultObj.data;
+            mostrarProductos(arrayDeProductos);
+        }
+    });
 });
+
+
+
+
