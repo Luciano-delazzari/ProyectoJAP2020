@@ -143,3 +143,10 @@ a.custom-card:hover {
 .error {
  border-color: red;
 }
+.caja{
+  border: 1px #dfe0ff solid;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 200px;
+  }
+  
