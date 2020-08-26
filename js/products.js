@@ -8,8 +8,8 @@ function mostrarProductos(array) {
   for (let index = 0; index < array.length; index++) {
       products = array[index];
 
-      if           (((min == undefined) || (min != undefined && parseInt(category.productCount) >= min)) &&
-                   ((max == undefined) || (max != undefined && parseInt(category.productCount) <= max))){
+      if(((min == undefined) || (min != undefined && parseInt(products.cost) >= min)) &&
+                   ((max == undefined) || (max != undefined && parseInt(products.cost) <= max))){
 
                contenidoaAgregar += ` 
                     <a href="category-info.html" class="list-group-item list-group-item-action">
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             max = undefined
         }
 
-        mostrarProductos();
+        mostrarProductos(arrayDeProductos);
 
    });
     document.getElementById("botonlimpiar").addEventListener("click" , function () {
@@ -78,7 +78,7 @@ min = undefined;
 max = undefined;
 
 
-mostrarProductos();
+mostrarProductos(arrayDeProductos);
 
     });
 
