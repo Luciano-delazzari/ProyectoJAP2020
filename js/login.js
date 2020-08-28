@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         if (completo) {
             if (email.value, password.value) {
+
+                localStorage.setItem('usuario-logueado', JSON.stringify({ correo: email.value}));
+                
                 window.location ="inicio.html"
             } 
             else {

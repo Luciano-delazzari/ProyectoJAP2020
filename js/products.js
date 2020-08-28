@@ -12,7 +12,7 @@ function mostrarProductos(array) {
                    ((max == undefined) || (max != undefined && parseInt(products.cost) <= max))){
 
                contenidoaAgregar += ` 
-                    <a href="category-info.html" class="list-group-item list-group-item-action">
+                    <a class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">

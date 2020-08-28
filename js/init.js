@@ -44,4 +44,13 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  let usuariologueado = localStorage.getItem('usuario-logueado');
+  let user = document.getElementById("usuario");
+  
+  
+  if(usuariologueado) {
+    usuariologueado = JSON.parse(usuariologueado);
+    user.innerText = user.innerText + 'Usuario: ' + usuariologueado.correo;
+    
+  }
 });
