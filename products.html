@@ -26,12 +26,28 @@
     
     <footer class="text-muted bg-light">
       <h1 class="text-center p-4"> Todos nuestros productos aquí.</h1>
+      <div class="container">
+        <div class="row">
+            <div class="col text-right">
+                <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                    <label class="btn btn-light active" id="precio" >
+                        <input type="radio" name="options" autocomplete="off" checked>Precio
+                    </label>
+                    <label class="btn btn-light" id="precio-asc" >
+                        <input type="radio" name="options" autocomplete="off">Precio    
+                    </label> 
+                    <label class="btn btn-light" id="relevancia" >
+                      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relev.
+                  </label> 
+                </div>
+            </div>
+        </div>
       <div class="row justify-content-end">
         <div class="col-md-6"></div>
           <div class="col-md-6 col-sm-12 mb-1 container">
             <div class="row container p-0 m-0">
               <div class="col">
-                <p class="font-weight-normal text-right my-2">Cant.</p>
+                <p class="font-weight-normal text-right my-2">Precio</p>
               </div>
               <div class="col">
                 <input class="form-control" type="number" placeholder="min." id="minprecio">

@@ -1,6 +1,33 @@
 var arrayDeProductos = [];
 var min = undefined;
 var max = undefined;
+const PRECIO_PAMAYOR = "de mas a menos"
+const PRECIO_ALEMNOR = "de menos a mas"
+const ORDER_RELEVANCIA = "por relevancia de mas a menos"
+
+function ordernar (criterio, array) {
+    let result = [];
+    if (criterio === PRECIO_PAMAYOR) {
+        result = array.sort(function (a, b) {
+            if (a.cost < b.cost) {return -1; }
+            if (a.cost > b.cost) {return 1;}
+            return 0;
+        });
+    } else if (criterio === PRECIO_ALEMNOR) {
+        result = array.sort(function(a, b){
+            if (a.cost > b.cost) {return -1}
+            if (a.cost < b.cost) {return 1}
+            return 0;
+        });
+    }  else if (criterio === ORDER_RELEVANCIA) {
+        result = array.sort(function(a, b){
+            if (a.soldCount > b.soldCount) {return -1}
+            if (a.soldCount < b.soldCount) {return 1}
+            return 0;
+        });
+    }
+    return result
+}
 
 function mostrarProductos(array) {
   let contenidoaAgregar =  "";
@@ -45,9 +72,35 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === 'ok') 
         {
             arrayDeProductos = resultObj.data;
+            
+             arrayDeProductos= ordernar(PRECIO_ALEMNOR, arrayDeProductos);
+
             mostrarProductos(arrayDeProductos);
         }
     });
+
+    document.getElementById("precio").addEventListener("click" , function() {
+        
+        arrayDeProductos = ordernar(PRECIO_PAMAYOR, arrayDeProductos);
+
+        mostrarProductos(arrayDeProductos);
+    });
+
+    document.getElementById("precio-asc").addEventListener("click" , function() {
+        
+        arrayDeProductos = ordernar(PRECIO_ALEMNOR, arrayDeProductos);
+
+        mostrarProductos(arrayDeProductos);
+    });
+
+    document.getElementById("relevancia").addEventListener("click" , function() {
+        
+        arrayDeProductos = ordernar(ORDER_RELEVANCIA, arrayDeProductos);
+
+        mostrarProductos(arrayDeProductos);
+    });
+
+
 
    document.getElementById("botonfiltro").addEventListener("click" , function () {
       
