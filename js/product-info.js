@@ -1,5 +1,5 @@
 var product =  {};
-
+var coments= [];
 function mostrarMasSimilares(array){
 
     let agregar = "";
@@ -17,6 +17,23 @@ function mostrarMasSimilares(array){
 
         document.getElementById("mas-similares").innerHTML = agregar;
     }
+}
+
+function mostrarComent(arrayy) {
+    let comentario = ""
+
+    for(let index = 0; index <arrayy.length; index++) {
+        comentarios = arrayy[index];
+
+        comentario += `<strong> `+ comentarios.user +`</strong>
+        <p> `+ comentarios.description + `</p>
+        <p> `+ comentarios.score +`/5 </p>
+        <p> `+ comentarios.dateTime +`</p>
+        
+        `
+    }
+
+    document.getElementById("coments").innerHTML = comentario
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -40,6 +57,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             
             mostrarMasSimilares(product.images );
+        }
+    });
+
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+        if (resultObj.status === 'ok'){
+            coments = resultObj.data;
+
+            mostrarComent(coments);
         }
     });
 });
