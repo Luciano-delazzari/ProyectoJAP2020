@@ -1,22 +1,26 @@
 var product =  {};
 var coments= [];
-function mostrarMasSimilares(array){
+var relatedproductss = [];
 
-    let agregar = "";
 
-    for(let i = 0; i < array.length; i++){
-        let imagen = array[i];
 
-        agregar += `
+function mostrarMasSimilares(array, array2){
+    let insertar = '<hr>';
+    array2.forEach(function(i){
+        insertar += `
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imagen + `" alt="">
+                <img class="img-fluid img-thumbnail" src="` + array[i].imgSrc + `" alt="">
             </div>
         </div>
-        `
+        `;
+        insertar += 'Nombre: ' + array[i].name + '<br>';
+        insertar += 'Costo: ' + array[i].cost + ' USD<br>';
+        
+    });
 
-        document.getElementById("mas-similares").innerHTML = agregar;
-    }
+    document.getElementById("mas-similares").innerHTML = insertar;
+
 }
 
 function mostrarComent(arrayy) {
@@ -56,9 +60,21 @@ document.addEventListener("DOMContentLoaded", function(e){
             cantidadvendidos.innerHTML = product.soldCount;
 
             
-            mostrarMasSimilares(product.images );
+            
         }
     });
+
+
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            relatedproductss = resultObj.data;
+
+            
+            mostrarMasSimilares(relatedproductss, product.relatedProducts);
+        }
+
+    });
+
 
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
         if (resultObj.status === 'ok'){
@@ -66,5 +82,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             mostrarComent(coments);
         }
+    });
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status = 'ok'){
+
+            relatedproducts = resultObj.data;
+
+        }
+
     });
 });
